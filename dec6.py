@@ -7,17 +7,17 @@ for i in range(len(x)-L-1):
         break
 
 # non-set solution
-# for i in range(len(x)-13):
-#     flag=1
-#     substr = x[i:i+14]
-#     substr=sorted(substr)
-#     for j in range(len(substr)-1):
-#         if(substr[j]==substr[j+1]):
-#             flag=0
-#             break
-#     if(flag):
-#         print(substr, "GOT", i+14)
-#         break
+for i in range(len(x)-13):
+    flag=1
+    substr = x[i:i+14]
+    substr=sorted(substr)
+    for j in range(len(substr)-1):
+        if(substr[j]==substr[j+1]):
+            flag=0
+            break
+    if(flag):
+        print(substr, "GOT IT", i+14)
+        break
 
 
 
