@@ -19,7 +19,7 @@ for val in x:
     steps.extend(2*[reg])
     reg+=int(a[1])
 
-s=0
+s=0 # part 1
 for i in range(0,6):
     cyc=(20+i*40)
     s+=cyc*steps[cyc-1]
@@ -29,11 +29,10 @@ crt = len(steps)*['.']
 for i in range(0,len(steps)): #CRT positions in each cycle
     # print("cycle", i+1, "reg val during cyc", steps[i])
     crtpos = i%40
-    crtrow = i//40
     # print("Current CRT", crt[:i+1])
-    if((crtpos>=steps[i]-1)and (crtpos<=steps[i]+1)):
+    if((crtpos>=steps[i]-1)and(crtpos<=steps[i]+1)):
         # print("CRT at cyc", i+1, "is #")
-        crt[crtrow*40+crtpos]='#'
+        crt[i]='#'
 
 crt=''.join(crt)
 draw(crt)
