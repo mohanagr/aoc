@@ -56,7 +56,7 @@ print(get_children(en,nr,nc,parent=[3,5]))
 flag=False
 visited=np.zeros((nr,nc),dtype='bool')
 visited[:]=False
-root=st
+root=en
 visited[root[0],root[1]]=True
 queue=[]
 queue.append(root)
@@ -79,8 +79,9 @@ while(len(queue)>0):
             if(visited[chil[0],chil[1]]==False):
                 char=zz[chil[0]][chil[1]]
                 print("looking at char",char)
-                if((ord(char)-ord(schar))<=1):
-                    if(chil==en):
+                # if((ord(char)-ord(schar))<=1):
+                if((ord(char)-ord(schar))>=-1):
+                    if(char=='a'):
                         print("FOUND breaking",nsteps)
                         assert(1==0)
                     print("good chil, adding")
