@@ -30,7 +30,7 @@ def parse_input(input_text):
     return parsed_data
 
 def update_ranges(range, condition, number):
-    print(range,condition,number)
+    # print(range,condition,number)
     number = int(number)
     new_range = []
     out_range = []
@@ -59,7 +59,7 @@ ops = {
     }
 graph= parse_input(node_lines)
 
-print(graph)
+# print(graph)
 pattern = r"x=(\d+),m=(\d+),a=(\d+),s=(\d+)"
 # numA=0
 # numR=0
@@ -93,7 +93,7 @@ pattern = r"x=(\d+),m=(\d+),a=(\d+),s=(\d+)"
 # print(xmas)
 
 def comb_from_range(xmas):
-    print("range passed to A", xmas)
+    # print("range passed to A", xmas)
     return (xmas['x'][1]-xmas['x'][0]+1)*(xmas['m'][1]-xmas['m'][0]+1)*(xmas['a'][1]-xmas['a'][0]+1)*(xmas['s'][1]-xmas['s'][0]+1)
 curnode = 'in'
 q = [curnode]
@@ -104,25 +104,25 @@ comb=0
 niter = 0
 while q:
     curnode = q.pop()
-    print("curnode is", curnode)
-    print("quue", q)
+    # print("curnode is", curnode)
+    # print("quue", q)
     if curnode in graph.keys():
         prev_range = min_vals[curnode].copy()
-        print("prev range outside loop", prev_range)
+        # print("prev range outside loop", prev_range)
         for i in range(len(graph[curnode])): #all except the final default child
             
             child = graph[curnode][i]
-            print("prev range inside loop for child,",child[0], "is", prev_range)
+            # print("prev range inside loop for child,",child[0], "is", prev_range)
             if len(child) == 1: #no condition = default val
-                print("default node", child)
+                # print("default node", child)
                 if child[0] == 'A': #acceptance
                     comb+= comb_from_range(prev_range)
                 elif child[0] != 'R': #some actual node
                     min_vals[child[0]] = prev_range.copy()
                     q.insert(0,child[0])
-                    print("updated child value", min_vals[child[0]])
+                    # print("updated child value", min_vals[child[0]])
             else:
-                print("condition node", child)
+                # print("condition node", child)
                 in_range, out_range = update_ranges(prev_range[child[1]], child[2], child[3])
                 prev_range[child[1]] = in_range
                 if child[0] == 'A': #acceptance
@@ -130,7 +130,7 @@ while q:
                 elif child[0] != 'R': #some actual node
                     min_vals[child[0]] = prev_range.copy()
                     q.insert(0,child[0])
-                    print("updated child value", min_vals[child[0]], "for child", child[0])
+                    # print("updated child value", min_vals[child[0]], "for child", child[0])
                 prev_range[child[1]] = out_range
                 
     niter+=1
